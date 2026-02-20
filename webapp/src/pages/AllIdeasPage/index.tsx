@@ -10,11 +10,11 @@ export const AllIdeasPage = () => {
   return (
     <div>
       <h1>All IdeaNick</h1>
-      { data?.ideas.map((idea) => (
-          <div key={idea.nick}>
-            <h2>{idea.name}</h2>
-            <p>{idea.description}</p>
-          </div>
+      {data?.ideas.map((idea) => (
+        <div key={idea.nick}>
+          <h2>{idea.name}</h2>
+          <p>{idea.description}</p>
+        </div>
       ))}
     </div>
   )

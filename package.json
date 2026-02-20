@@ -4,12 +4,31 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter @ideanick/webapp dev",
+    "dev": "pnpm -r --parallel dev",
     "build": "pnpm --filter @ideanick/webapp build",
-    "prettify": "prettier --log-level warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"
+    "prettify": "pnpm -r --parallel prettify",
+    "b": "pnpm --filter @ideanick/backend",
+    "w": "pnpm --filter @ideanick/webapp",
+    "types": "concurrently 'pnpm b types' 'pnpm w types'"
   },
   "dependencies": {
     "express": "^5.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "prettier": "^3.8.1",
+    "rimraf": "^6.1.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "vite": "^8.0.0-beta.13"
+    }
+  }
 }
