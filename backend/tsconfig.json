@@ -1,11 +1,12 @@
 {
   "ts-node": {
     "files": true,
-    "transpileOnly": true
+    "transpileOnly": true,
+    "cwd": "."
   },
   "compilerOptions": {
     "allowJs": true,
-    // "downlevelIteration": true,
+    // "iterableTypeDeclarations": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
@@ -22,6 +23,9 @@
     "sourceMap": true,
     "strict": true,
     "target": "ES2021"
-  }
-  // "include": ["./src/**/*"]
+  },
+
+  "include": [
+    "./src/**/*.ts"
+  ]
 }
