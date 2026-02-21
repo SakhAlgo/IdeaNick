@@ -8,7 +8,9 @@ const ideas = [
 
 const trpc = initTRPC.create()
 
-if (true) console.log(123)
+// if (true) {
+//   console.log(123)
+// }
 
 export const trpcRouter = trpc.router({
   getIdeas: trpc.procedure.query(() => {

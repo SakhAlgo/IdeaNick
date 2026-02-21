@@ -1,4 +1,8 @@
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import baseConfig from '../eslint.config.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -9,6 +13,7 @@ export default [
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json', 'tsconfig.node.json', 'tsconfig.app.json'],
+        tsconfigRootDir: __dirname,
       },
     },
     rules: {
@@ -27,6 +32,7 @@ export default [
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.json', 'tsconfig.node.json', 'tsconfig.app.json'],
+        tsconfigRootDir: __dirname,
       },
     },
   },

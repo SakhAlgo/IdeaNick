@@ -1,3 +1,6 @@
 {
-  "eslint.workingDirectories": ["backend", "webapp"]
+  "eslint.workingDirectories": ["backend", "webapp"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }
