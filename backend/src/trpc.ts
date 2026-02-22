@@ -8,7 +8,7 @@ const ideas = [
 
 const trpc = initTRPC.create()
 
-const x: string = 'hello3'
+const x: string = 'hello'
 console.info(x)
 
 // if (true) {
