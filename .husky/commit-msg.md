@@ -1,0 +1,24 @@
+<!-- Использования питона для преобразования сообщения коммита -->
+#!/bin/sh
+python3 - "$1" << 'EOF'
+import sys
+
+commit_msg_file = sys.argv[1]
+
+with open(commit_msg_file, 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+
+if lines:
+    # Process first line: trim, capitalize, remove trailing dots and spaces
+    first = lines[0].strip()
+    if first:
+        first = first[0].upper() + first[1:]
+        first = first.rstrip('. ')
+    lines[0] = first + '\n'
+    
+    # Trim other lines
+    lines[1:] = [line.strip() for line in lines[1:] if line.strip()]
+
+with open(commit_msg_file, 'w', encoding='utf-8') as f:
+    f.writelines(lines)
+EOF

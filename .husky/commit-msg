@@ -1,23 +1,20 @@
 #!/bin/sh
-python3 - "$1" << 'EOF'
-import sys
 
-commit_msg_file = sys.argv[1]
+COMMIT_MSG_FILE=$1
 
-with open(commit_msg_file, 'r', encoding='utf-8') as f:
-    lines = f.readlines()
+# Read first line
+read -r first_line < "$COMMIT_MSG_FILE"
 
-if lines:
-    # Process first line: trim, capitalize, remove trailing dots and spaces
-    first = lines[0].strip()
-    if first:
-        first = first[0].upper() + first[1:]
-        first = first.rstrip('. ')
-    lines[0] = first + '\n'
-    
-    # Trim other lines
-    lines[1:] = [line.strip() for line in lines[1:] if line.strip()]
+# Trim leading/trailing spaces
+first_line=$(printf '%s' "$first_line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
-with open(commit_msg_file, 'w', encoding='utf-8') as f:
-    f.writelines(lines)
-EOF
+# Uppercase first character
+if [ -n "$first_line" ]; then
+    first_line=$(printf '%s' "$first_line" | awk '{ $1 = toupper(substr($1,1,1)) substr($1,2) }1')
+fi
+
+# Remove trailing dots and spaces
+first_line=$(printf '%s' "$first_line" | sed 's/[. ]*$//')
+
+# Write back
+printf '%s\n' "$first_line" > "$COMMIT_MSG_FILE"
