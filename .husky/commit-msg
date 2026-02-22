@@ -1,0 +1,20 @@
+#!/bin/sh
+export PATH="$PATH:/usr/bin:/usr/local/bin:./node_modules/.bin"
+# . "$(dirname "$0")/_/husky.sh"
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Strip trailing spaces from each line + trim blank lines
+COMMIT_MSG=$(echo "$COMMIT_MSG" | /usr/bin/sed 's/[[:space:]]*$//' | /usr/bin/sed '/./,$!d' | /usr/bin/sed -e :a -e '/^\n*$/{$d;N;ba}')
+
+# Uppercase first character
+FIRST_CHAR=$(echo "$COMMIT_MSG" | /usr/bin/cut -c1 | /usr/bin/tr '[:lower:]' '[:upper:]')
+REST=$(echo "$COMMIT_MSG" | /usr/bin/cut -c2-)
+COMMIT_MSG="${FIRST_CHAR}${REST}"
+
+# Remove trailing dot
+COMMIT_MSG=$(echo "$COMMIT_MSG" | /usr/bin/sed 's/\.$//')
+
+# Write back
+echo "$COMMIT_MSG" > "$COMMIT_MSG_FILE"
