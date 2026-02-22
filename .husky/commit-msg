@@ -8,12 +8,11 @@ with open(commit_msg_file, 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
 if lines:
-    # Process first line: trim, capitalize, remove trailing dot
+    # Process first line: trim, capitalize, remove trailing dots
     first = lines[0].strip()
     if first:
         first = first[0].upper() + first[1:]
-        if first.endswith('.'):
-            first = first[:-1]
+        first = first.rstrip('.')
     lines[0] = first + '\n'
     
     # Trim other lines
