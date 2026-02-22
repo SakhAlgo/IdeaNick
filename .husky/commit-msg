@@ -1,20 +1,24 @@
 #!/bin/sh
-export PATH="$PATH:/usr/bin:/usr/local/bin:./node_modules/.bin"
-# . "$(dirname "$0")/_/husky.sh"
+python3 - "$1" << 'EOF'
+import sys
 
-COMMIT_MSG_FILE=$1
-COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+commit_msg_file = sys.argv[1]
 
-# Strip trailing spaces from each line + trim blank lines
-COMMIT_MSG=$(echo "$COMMIT_MSG" | /usr/bin/sed 's/[[:space:]]*$//' | /usr/bin/sed '/./,$!d' | /usr/bin/sed -e :a -e '/^\n*$/{$d;N;ba}')
+with open(commit_msg_file, 'r', encoding='utf-8') as f:
+    lines = f.readlines()
 
-# Uppercase first character
-FIRST_CHAR=$(echo "$COMMIT_MSG" | /usr/bin/cut -c1 | /usr/bin/tr '[:lower:]' '[:upper:]')
-REST=$(echo "$COMMIT_MSG" | /usr/bin/cut -c2-)
-COMMIT_MSG="${FIRST_CHAR}${REST}"
+if lines:
+    # Process first line: trim, capitalize, remove trailing dot
+    first = lines[0].strip()
+    if first:
+        first = first[0].upper() + first[1:]
+        if first.endswith('.'):
+            first = first[:-1]
+    lines[0] = first + '\n'
+    
+    # Trim other lines
+    lines[1:] = [line.strip() for line in lines[1:] if line.strip()]
 
-# Remove trailing dot
-COMMIT_MSG=$(echo "$COMMIT_MSG" | /usr/bin/sed 's/\.$//')
-
-# Write back
-echo "$COMMIT_MSG" > "$COMMIT_MSG_FILE"
+with open(commit_msg_file, 'w', encoding='utf-8') as f:
+    f.writelines(lines)
+EOF
