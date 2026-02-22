@@ -11,9 +11,9 @@ const trpc = initTRPC.create()
 const x: string = 'hello'
 console.info(x)
 
-// if (true) {
-//   console.log(123)
-// }
+if (Math.random()) {
+  console.info(123)
+}
 
 export const trpcRouter = trpc.router({
   getIdeas: trpc.procedure.query(() => {
