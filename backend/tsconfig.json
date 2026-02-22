@@ -25,7 +25,5 @@
     "target": "ES2021"
   },
 
-  "include": [
-    "./src/**/*.ts"
-  ]
+  "include": ["./src/**/*.ts"]
 }

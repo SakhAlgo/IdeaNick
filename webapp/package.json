@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
     "preview": "vite preview",
+    "prepare": "husky",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts .",
     "types": "tsc --noEmit --project ./tsconfig.app.json && tsc --noEmit --project ./tsconfig.node.json",
     "prettify": "prettier --log-level warn --cache --write src/**/*.{ts,tsx,js,json,yml,scss} !**/{node_modules,dist}/**/*"
   },
@@ -29,5 +30,4 @@
     "typescript": "~5.9.3",
     "vite": "^8.0.0-beta.13"
   }
-
 }

@@ -10,6 +10,13 @@ import tseslint from 'typescript-eslint'
 
 export default [
   {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
   },
   {

@@ -1,5 +1,6 @@
 {
   "name": "@ideanick/backend",
+  "type": "module",
   "exports": {
     "./src/trpc": "./src/trpc.ts"
   },
@@ -10,6 +11,7 @@
     "build": "rimraf ./dist && tsc --build ./tsconfig.json",
     "start": "node ./dist/index.js",
     "types": "tsc --noEmit --project ./tsconfig.json",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts .",
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"
   },
   "dependencies": {

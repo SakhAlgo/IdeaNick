@@ -7,7 +7,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   ...baseConfig,
-
+  {
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
