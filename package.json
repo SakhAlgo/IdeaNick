@@ -7,7 +7,7 @@
     "b": "pnpm --filter @react-tutor/backend",
     "w": "pnpm --filter @react-tutor/webapp",
     "dev": "pnpm -r --parallel dev",
-    "types": "concurrently 'pnpm b types' 'pnpm w types'",
+    "types": "pnpm -r --parallel types",
     "lint": "pnpm -r --parallel lint",
     "prettify": "pnpm  -r --parallel prettify",
     "prepare": "husky"
