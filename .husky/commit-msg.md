@@ -22,3 +22,26 @@ if lines:
 with open(commit_msg_file, 'w', encoding='utf-8') as f:
     f.writelines(lines)
 EOF
+
+2 вариант 
+
+<!-- работает с одной строкой -->
+# Удаляет пробелы в начале и конце первой строки, делает первую букву заглавной, удаляет точки и пробелы в конце первой строки.
+COMMIT_MSG_FILE=$1
+
+# Read first line
+read -r first_line < "$COMMIT_MSG_FILE"
+
+# Trim leading/trailing spaces
+first_line=$(printf '%s' "$first_line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+
+# Uppercase first character
+if [ -n "$first_line" ]; then
+    first_line=$(printf '%s' "$first_line" | awk '{ $1 = toupper(substr($1,1,1)) substr($1,2) }1')
+fi
+
+# Remove trailing dots and spaces
+first_line=$(printf '%s' "$first_line" | sed 's/[. ]*$//')
+
+# Write back
+printf '%s\n' "$first_line" > "$COMMIT_MSG_FILE"
