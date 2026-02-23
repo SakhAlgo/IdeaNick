@@ -4,8 +4,8 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "b": "pnpm --filter @react-tutor/backend",
-    "w": "pnpm --filter @react-tutor/webapp",
+    "b": "pnpm --filter @ideanick/backend",
+    "w": "pnpm --filter @ideanick/webapp",
     "dev": "pnpm -r --parallel dev",
     "types": "pnpm -r --parallel types",
     "lint": "pnpm -r --parallel lint",

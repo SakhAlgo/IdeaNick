@@ -1,6 +1,5 @@
 {
   "name": "@ideanick/backend",
-  "type": "module",
   "exports": {
     "./src/trpc": "./src/trpc.ts"
   },
