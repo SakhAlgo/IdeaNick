@@ -1,25 +1,30 @@
 import { initTRPC } from '@trpc/server'
+import _ from 'lodash'
+import { z } from 'zod'
 
-const ideas = [
-  { nick: 'nick 1', name: 'Name 1', description: 'lorem 1' },
-  { nick: 'nick 2', name: 'Name 2', description: 'lorem 2' },
-  { nick: 'nick 3', name: 'Name 3', description: 'lorem 3' },
-]
+const ideas = _.times(100, (i) => ({
+  nick: `nick ${i}`,
+  name: `Idea ${i}`,
+  description: `Description ${i}`,
+  text: _.times(10, (j) => `<p>Text paragraf ${j}</p>`).join(' '),
+}))
 
 const trpc = initTRPC.create()
-
-const x: string = 'hello'
-console.info(x)
-
-if (Math.random()) {
-  console.info(123)
-}
 
 export const trpcRouter = trpc.router({
   getIdeas: trpc.procedure.query(() => {
     // throw new Error("Not implemented")
-    return { ideas }
+    return { ideas: ideas.map((idea) => _.pick(idea, ['nick', 'name', 'description'])) }
   }),
+  getIdea: trpc.procedure
+    .input(
+      z.object({
+        ideaNick: z.string(),
+      })
+    )
+    .query(({ input }) => {
+      const idea = ideas.find((idea) => idea.nick === input.ideaNick)
+      return { idea: idea || null }
+    }),
 })
-
 export type TrpcRouter = typeof trpcRouter
