@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Lint caches
+.eslintcache
+.stylelintcache
+.prettier-cache
+node_modules/.cache/

@@ -1,2 +1,7 @@
 **/node_modules/**/*
 **/dist/**/*
+dist/
+build/
+coverage/
+*.lock
+.pnpm-workspace-state-v1.json
