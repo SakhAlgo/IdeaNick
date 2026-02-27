@@ -10,6 +10,7 @@
     "types": "pnpm -r --parallel types",
     "lint": "pnpm -r --parallel lint",
     "prettify": "pnpm  -r --parallel prettify",
+    "gencmp": "node create-component.js",
     "prepare": "husky"
   },
   "devDependencies": {
