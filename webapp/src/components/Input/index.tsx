@@ -3,6 +3,7 @@ import { type FormikProps } from 'formik'
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Input = ({ name, label, formik }: { name: string; label: string; formik: FormikProps<any> }) => {
   const value = formik.values[name]
+  const error = formik.errors[name] as string | undefined
 
   return (
     <div style={{ marginBottom: 10 }}>
@@ -17,6 +18,7 @@ export const Input = ({ name, label, formik }: { name: string; label: string; fo
         name={name}
         id={name}
       />
+      {error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   )
 }
