@@ -1,0 +1,5 @@
+node_modules/
+**/node_modules/
+*.pnpm-workspace-state*.json
+echo "node_modules/" >> /home/main/projects/ideanick/.prettierignore
+dist/

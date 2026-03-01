@@ -5,3 +5,4 @@ build/
 coverage/
 *.lock
 .pnpm-workspace-state-v1.json
+**/pnpm-workspace-state*.json

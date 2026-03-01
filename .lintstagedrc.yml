@@ -1,1 +1,2 @@
-'*.{ts,js,json,yml}': 'prettier --log-level warn --cache --cache-location ./node_modules/.cache/.prettier-cache --write'
+'!(node_modules/**/*.{ts,js,json,yml}':
+  - 'prettier --log-level warn --cache --cache-location ./node_modules/.cache/.prettier-cache --write'
