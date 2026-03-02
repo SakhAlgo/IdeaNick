@@ -1,7 +1,7 @@
 {
   "name": "@ideanick/backend",
   "exports": {
-    "./src/trpc": "./src/trpc.ts"
+    "./src/router": "./src/router/index.ts"
   },
   "private": true,
   "version": "0.0.0",
