@@ -1,7 +1,11 @@
 {
   "name": "@ideanick/backend",
   "exports": {
-    "./src/router": "./src/router/index.ts"
+    "./src/router": "./src/router/index.ts",
+    "./src/router/createIdea/input": "./src/router/createIdea/input.ts",
+    "./src/router/createIdea": "./src/router/createIdea/index.ts",
+    "./src/router/getIdea": "./src/router/getIdea/index.ts",
+    "./src/router/getIdeas": "./src/router/getIdeas/index.ts"
   },
   "private": true,
   "version": "0.0.0",
