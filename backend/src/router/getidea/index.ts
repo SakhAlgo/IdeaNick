@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { ideas } from '../../lib/ideas'
 import { trpc } from '../../lib/trpc'
 
-export const getIdeaTrpcRoute = trpc.procedure
+export const getideaTrpcRoute = trpc.procedure
   .input(
     z.object({
       ideaNick: z.string(),
