@@ -25,15 +25,15 @@ export default [
       },
     },
     rules: {
-      'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-restricted-imports': [
         'error',
         {
+          // Запрещаем импорт всего из @ideanick/backend, кроме /input
           patterns: [
             {
-              group: ['@ideanick/backend/**', '!@ideanick/backend/**/', '!@ideanick/backend/**/input'],
+              regex: '^@ideanick/backend/(?!(.*/)?input$).+$',
               allowTypeImports: true,
-              message: 'Only types and input schemas are allowed to be imported from backend',
+              message: 'Импорт из бэкенда разрешен только для файлов input',
             },
           ],
         },

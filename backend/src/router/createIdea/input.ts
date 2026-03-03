@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+export const x123 = 777
 export const zCreateIdeaTrpcInput = z.object({
   name: z.string().min(1),
   nick: z
