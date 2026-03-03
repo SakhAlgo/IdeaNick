@@ -1,5 +1,6 @@
 import { zCreateIdeaTrpcInput } from '@ideanick/backend/src/router/createIdea/input'
 import { useFormik } from 'formik'
+import { useState } from 'react'
 import { z } from 'zod'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
@@ -11,6 +12,7 @@ const schema = zCreateIdeaTrpcInput
 type FormValues = z.infer<typeof schema>
 
 export const NewIdeaPage = () => {
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false)
   const createIdea = trpc.createIdea.useMutation()
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -35,6 +37,11 @@ export const NewIdeaPage = () => {
     },
     onSubmit: async (values) => {
       await createIdea.mutateAsync(values)
+      formik.resetForm()
+      setSuccessMessageVisible(true)
+      setTimeout(() => {
+        setSuccessMessageVisible(false)
+      }, 3000)
     },
   })
 
@@ -51,6 +58,7 @@ export const NewIdeaPage = () => {
         <Input name="description" label="Description" formik={formik} />
         <TextArea name="text" label="Text" formik={formik} />
         {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
+        {successMessageVisible && <div style={{ color: 'green' }}>Idea created successfully!</div>}
         <button type="submit" disabled={formik.isSubmitting}>
           {formik.isSubmitting ? 'Submitting...' : 'Create Idea'}
         </button>
