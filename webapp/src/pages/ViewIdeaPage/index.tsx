@@ -24,6 +24,7 @@ export const ViewIdeaPage = () => {
   }
   return (
     <Segment title={data.idea.name}>
+      <p className={css.nick}>{data.idea.nick}</p>
       <p className={css.description}>{data.idea.description}</p>
       <div className={css.text} dangerouslySetInnerHTML={{ __html: data.idea.text }} />
     </Segment>

@@ -13,6 +13,7 @@ type FormValues = z.infer<typeof schema>
 
 export const NewIdeaPage = () => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false)
+  const [submitingError, setSubmitingError] = useState<string | null>(null)
   const createIdea = trpc.createIdea.useMutation()
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -36,28 +37,30 @@ export const NewIdeaPage = () => {
       )
     },
     onSubmit: async (values) => {
-      await createIdea.mutateAsync(values)
-      formik.resetForm()
-      setSuccessMessageVisible(true)
-      setTimeout(() => {
-        setSuccessMessageVisible(false)
-      }, 3000)
+      setSubmitingError(null)
+      try {
+        await createIdea.mutateAsync(values)
+        formik.resetForm()
+        setSuccessMessageVisible(true)
+        setTimeout(() => {
+          setSuccessMessageVisible(false)
+        }, 3000)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        setSubmitingError(error.message)
+      }
     },
   })
 
   return (
     <Segment title="New Idea">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          formik.handleSubmit()
-        }}
-      >
+      <form onSubmit={formik.handleSubmit}>
         <Input name="name" label="Name" formik={formik} />
         <Input name="nick" label="Nick" formik={formik} />
         <Input name="description" label="Description" formik={formik} />
         <TextArea name="text" label="Text" formik={formik} />
         {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
+        {submitingError && <div style={{ color: 'red' }}>{submitingError}</div>}
         {successMessageVisible && <div style={{ color: 'green' }}>Idea created successfully!</div>}
         <button type="submit" disabled={formik.isSubmitting}>
           {formik.isSubmitting ? 'Submitting...' : 'Create Idea'}
