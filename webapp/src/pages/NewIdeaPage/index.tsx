@@ -57,7 +57,7 @@ export const NewIdeaPage = () => {
       <form onSubmit={formik.handleSubmit}>
         <Input name="name" label="Name" formik={formik} />
         <Input name="nick" label="Nick" formik={formik} />
-        <Input name="description" label="Description" formik={formik} />
+        <Input name="description" label="Description" formik={formik} maxWidth={500} />
         <TextArea name="text" label="Text" formik={formik} />
         {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
         {submitingError && <div style={{ color: 'red' }}>{submitingError}</div>}
