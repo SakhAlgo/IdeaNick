@@ -6,7 +6,7 @@ import css from './index.module.scss'
 
 export const AllIdeasPage = () => {
   // const result = trpc.getIdeas.useQuery()
-  const { data, isLoading, isError, isFetched } = trpc.getIdeas.useQuery()
+  const { data, isLoading, isError, isFetched } = trpc.getIdeas.useQuery({})
   if (isLoading) {
     return <div>Loading...</div>
   }

@@ -19,9 +19,11 @@
     "@tanstack/react-query": "^5.90.21",
     "@trpc/client": "^11.10.0",
     "@trpc/react-query": "^11.10.0",
+    "add": "^2.0.6",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "formik": "^2.4.9",
+    "formik-validator-zod": "^2.2.0",
     "include-media": "^2.0.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
@@ -29,7 +31,7 @@
     "reset-css": "^5.0.2",
     "sass": "^1.97.3",
     "superjson": "^2.2.6",
-    "zod": "^4.3.6"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/node": "^25.3.0",

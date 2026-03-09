@@ -14,4 +14,14 @@ export const applyTrpcToExpressApp = (expressApp: Express, appContext: AppContex
       createContext: () => appContext,
     })
   )
+  if (process.env.NODE_ENV !== 'production') {
+    expressApp.use('/panel', async (_, res) => {
+      const { renderTrpcPanel } = await import('trpc-ui')
+      return res.send(
+        renderTrpcPanel(trpcRouter, {
+          url: 'http://localhost:3000/trpc',
+        })
+      )
+    })
+  }
 }
