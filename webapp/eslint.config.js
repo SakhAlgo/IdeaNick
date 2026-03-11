@@ -1,6 +1,7 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import baseConfig from '../eslint.config.js'
+import pluginNode from 'eslint-plugin-node'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -11,6 +12,9 @@ export default [
   ...baseConfig,
 
   {
+    plugins: {
+      node: pluginNode,
+    },
     settings: {
       react: { version: 'detect' },
     },
@@ -25,6 +29,14 @@ export default [
       },
     },
     rules: {
+      'node/no-process-env': 'error',
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: '[object.type=MetaProperty][property.name=env]',
+          message: 'Use instead import { env } from "lib/env"',
+        },
+      ],
       '@typescript-eslint/no-restricted-imports': [
         'error',
         {
