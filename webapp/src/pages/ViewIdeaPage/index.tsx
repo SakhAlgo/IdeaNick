@@ -24,10 +24,9 @@ export const ViewIdeaPage = () => {
     return <div>Idea not found</div>
   }
   return (
-    <Segment title={data.idea.name} description="data.idea.description">
-      <div className={css.createdAt}>Created at: {format(data.idea.createdAt, 'dd.MM.yyyy')}</div>
-      <p className={css.nick}>{data.idea.nick}</p>
-      <p className={css.description}>{data.idea.description}</p>
+    <Segment title={data.idea.name} description={data.idea.description}>
+      <div className={css.createdAt}>Created At: {format(data.idea.createdAt, 'yyyy-MM-dd')}</div>
+      <div className={css.author}>Author: {data.idea.author.nick}</div>
       <div className={css.text} dangerouslySetInnerHTML={{ __html: data.idea.text }} />
     </Segment>
   )
