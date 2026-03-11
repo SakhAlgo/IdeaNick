@@ -1,16 +1,20 @@
 import { zSignInTrpcInput } from '@ideanick/backend/src/router/signIn/input'
 import { useFormik } from 'formik'
 import { withZodSchema } from 'formik-validator-zod'
+import Cookie from 'js-cookie'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Alert } from '../../components/Alert'
 import { Button } from '../../components/Button'
 import { FormItems } from '../../components/FormItems'
 import { Input } from '../../components/Input'
 import { Segment } from '../../components/Segment'
+import { getAllIdeasRoute } from '../../lib/routes'
 import { trpc } from '../../lib/trpc'
 
 export const SignInPage = () => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false)
+  const navigate = useNavigate()
+  const trpcUtils = trpc.useUtils()
   const [submitingError, setSubmitingError] = useState<string | null>(null)
   const signIn = trpc.signIn.useMutation()
   const formik = useFormik({
@@ -22,12 +26,11 @@ export const SignInPage = () => {
     onSubmit: async (values) => {
       setSubmitingError(null)
       try {
-        await signIn.mutateAsync(values)
-        formik.resetForm()
-        setSuccessMessageVisible(true)
-        setTimeout(() => {
-          setSuccessMessageVisible(false)
-        }, 3000)
+        const { token } = await signIn.mutateAsync(values)
+        Cookie.set('token', token, { expires: 99900 })
+        trpcUtils.invalidate()
+        navigate(getAllIdeasRoute())
+
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         setSubmitingError(error.message)
@@ -42,7 +45,6 @@ export const SignInPage = () => {
           <Input name="password" label="Password" type="password" formik={formik} maxWidth={500} />
           {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Some fields are invalid</div>}
           {!!submitingError && <Alert color="red">{submitingError}</Alert>}
-          {successMessageVisible && <Alert color="green">Sign In successfully!</Alert>}
           <Button loading={formik.isSubmitting}>Sign In</Button>
         </FormItems>
       </form>

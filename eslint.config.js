@@ -4,6 +4,7 @@ import pluginImport from 'eslint-plugin-import'
 import prettierPlugin from 'eslint-plugin-prettier'
 import eslintReact from 'eslint-plugin-react'
 import pluginReact from 'eslint-plugin-react'
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 // import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
@@ -19,7 +20,7 @@ export default [
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       react: eslintReact,
-      // 'react-hooks': eslintReactHooks,
+      'react-hooks': pluginReactHooks,
       // 'react-refresh': eslintReactRefresh,
       prettier: prettierPlugin,
       import: pluginImport,
@@ -31,6 +32,11 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      ...pluginReactHooks.configs.recommended?.rules,
+    },
+  },
   {
     rules: {
       ...prettierPlugin.configs.recommended.rules,

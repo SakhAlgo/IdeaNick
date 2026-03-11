@@ -20,7 +20,7 @@ export const AllIdeasPage = () => {
   return (
     <Segment title="All Ideas">
       <div className={css.ideas}>
-        {data?.ideas.map((idea) => (
+        {data?.ideas?.map((idea) => (
           <div className={css.idea} key={idea.nick}>
             <Segment
               size={2}

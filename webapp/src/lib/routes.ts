@@ -9,3 +9,4 @@ export const getNewIdeaRoute = () => '/ideas/new'
 export const getViewIdeaRoute = ({ ideaNick }: ViewIdeaRouteParams) => `/ideas/${ideaNick}`
 export const getSignUpRoute = () => '/signup'
 export const getSignInRoute = () => '/signin'
+export const getSignOutRoute = () => '/signout'

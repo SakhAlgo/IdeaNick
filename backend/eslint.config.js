@@ -1,4 +1,5 @@
 import baseConfig from '../eslint.config.js'
+import pluginNode from 'eslint-plugin-node'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -7,6 +8,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   ...baseConfig,
+  {
+    plugins: {
+      node: pluginNode,
+    },
+  },
   {
     files: ['**/*.{ts,js}'],
     languageOptions: {
@@ -23,6 +29,7 @@ export default [
   {
     rules: {
       curly: ['error', 'all'],
+      'node/no-process-env': 'error',
     },
   },
 ]
