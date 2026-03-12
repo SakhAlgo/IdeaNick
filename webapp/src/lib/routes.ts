@@ -10,3 +10,7 @@ export const getViewIdeaRoute = ({ ideaNick }: ViewIdeaRouteParams) => `/ideas/$
 export const getSignUpRoute = () => '/signup'
 export const getSignInRoute = () => '/signin'
 export const getSignOutRoute = () => '/signout'
+
+export const editIdeaRouteParams = getRouteParams({ ideaNick: true })
+export type EditIdeaRouteParams = typeof viewIdeaRouteParams
+export const getEditIdeaRoute = ({ ideaNick }: EditIdeaRouteParams) => `/ideas/${ideaNick}/edit`
