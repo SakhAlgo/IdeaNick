@@ -3,15 +3,16 @@ import { Layout } from './components/Layout'
 import { AppContextProvider } from './lib/ctx'
 import * as routes from './lib/routes'
 import { TrpcProvider } from './lib/trpc'
-import { AllIdeasPage } from './pages/AllIdeasPage'
-import { EditIdeaPage } from './pages/EditIdeaPage'
-import { NewIdeaPage } from './pages/NewIdeaPage'
-import { SignInPage } from './pages/SignInPage'
-import { SignOutPage } from './pages/SignOutPage'
-import { SignUpPage } from './pages/SignUpPage'
-import { ViewIdeaPage } from './pages/ViewIdeaPage'
+import { SignInPage } from './pages/auth/SignInPage'
+import { SignOutPage } from './pages/auth/SignOutPage'
+import { SignUpPage } from './pages/auth/SignUpPage'
+import { AllIdeasPage } from './pages/ideas/AllIdeasPage'
+import { EditIdeaPage } from './pages/ideas/EditIdeaPage'
+import { NewIdeaPage } from './pages/ideas/NewIdeaPage'
+import { ViewIdeaPage } from './pages/ideas/ViewIdeaPage'
 
 import './styles/global.scss'
+import { NotFoundPage } from './pages/other/NotFoundPage'
 
 export const App = () => {
   return (
@@ -27,6 +28,7 @@ export const App = () => {
               <Route path={routes.getNewIdeaRoute()} element={<NewIdeaPage />} />
               <Route path={routes.getViewIdeaRoute(routes.viewIdeaRouteParams)} element={<ViewIdeaPage />} />
               <Route path={routes.getEditIdeaRoute(routes.editIdeaRouteParams)} element={<EditIdeaPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
