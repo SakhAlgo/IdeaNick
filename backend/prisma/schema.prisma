@@ -18,6 +18,7 @@ model User {
 model Idea {
   id        String   @id @default(cuid())
   nick      String   @unique
+  serialNumber Int   @unique @default(autoincrement())
   name      String
   description String
   text      String
