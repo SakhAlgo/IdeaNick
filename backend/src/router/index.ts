@@ -3,6 +3,7 @@ import { trpc } from '../lib/trpc'
 // @index('./**/index.ts', f => `import { ${f.path.split('/').slice(0, -1).pop()}TrpcRoute } from '${f.path.split('/').slice(0, -1).join('/')}'`)
 import { signInTrpcRoute } from './auth/signIn'
 import { signUpTrpcRoute } from './auth/signUp'
+import { updatePasswordTrpcRoute } from './auth/updatePassword'
 import { updateProfileTrpcRoute } from './auth/updateProfile'
 import { createIdeaTrpcRoute } from './ideas/createIdea'
 import { getIdeaTrpcRoute } from './ideas/getIdea'
@@ -15,6 +16,7 @@ export const trpcRouter = trpc.router({
   // @index('./**/index.ts', f => `${f.path.split('/').slice(0, -1).pop()}: ${f.path.split('/').slice(0, -1).pop()}TrpcRoute,`)
   signIn: signInTrpcRoute,
   signUp: signUpTrpcRoute,
+  updatePassword: updatePasswordTrpcRoute,
   updateProfile: updateProfileTrpcRoute,
   createIdea: createIdeaTrpcRoute,
   getIdea: getIdeaTrpcRoute,
