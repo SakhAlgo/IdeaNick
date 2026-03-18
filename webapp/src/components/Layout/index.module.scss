@@ -19,7 +19,6 @@ $breakpoint: '<=900px';
     border-right: 1px solid $black;
     @include media($breakpoint) {
       overflow: visible;
-      flex: 0 0 auto;
       height: auto;
       border-right: none;
       border-bottom: 1px solid $black;
