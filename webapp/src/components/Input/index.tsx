@@ -13,7 +13,7 @@ export const Input = ({
   label: string
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formik: FormikProps<any>
-  maxWidth?: number
+  maxWidth?: number | string
   type?: 'text' | 'password'
 }) => {
   const value = formik.values[name]
