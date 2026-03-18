@@ -53,7 +53,7 @@ type PageWrapperProps<TProps extends Props, TQueryResult extends QueryResult | u
   checkExists?: (helperProps: HelperProps<TQueryResult>) => boolean
   checkExistsTitle?: string
   checkExistsMessage?: string
-
+  showLoaderOnFetching?: boolean
   useQuery?: () => TQueryResult
   setProps?: (setPropsProps: SetPropsProps<TQueryResult>) => TProps
   Page: React.FC<TProps>
@@ -74,6 +74,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   useQuery,
   setProps,
   Page,
+  showLoaderOnFetching = true,
 }: PageWrapperProps<TProps, TQueryResult>) => {
   const navigate = useNavigate()
   const ctx = useAppContext()
@@ -87,7 +88,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
     }
   }, [redirectNeeded, navigate])
 
-  if (queryResult?.isLoading || queryResult?.isFetching || redirectNeeded) {
+  if (queryResult?.isLoading || (showLoaderOnFetching && queryResult?.isFetching) || redirectNeeded) {
     return <Loader type="page" />
   }
 

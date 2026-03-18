@@ -19,3 +19,11 @@
 .editButton {
   margin-top: 20px;
 }
+
+.likes {
+  margin-top: 20px;
+
+  .likeButton {
+    @include link;
+  }
+}
