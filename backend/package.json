@@ -3,7 +3,8 @@
   "exports": {
     "./src/router": "./src/router/index.ts",
     "./src/router/*": "./src/router/*/index.ts",
-    "./src/router/*/input": "./src/router/*/input.ts"
+    "./src/router/*/input": "./src/router/*/input.ts",
+    "./src/utils/can": "./src/utils/can.ts"
   },
   "private": true,
   "version": "0.0.0",
