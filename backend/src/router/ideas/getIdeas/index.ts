@@ -20,17 +20,18 @@ export const getIdeasTrpcRoute = trpc.procedure.input(zGetIdeasTrpcInput).query(
         },
       },
     },
-    where: !input.search
-      ? undefined
-      : {
-          OR: [
-            { name: { contains: input.search, mode: 'insensitive' } },
-
-            { description: { contains: input.search, mode: 'insensitive' } },
-
-            { text: { contains: input.search, mode: 'insensitive' } },
-          ],
-        },
+    where: {
+      blockedAt: null,
+      ...(!input.search
+        ? {}
+        : {
+            OR: [
+              { name: { contains: input.search, mode: 'insensitive' } },
+              { description: { contains: input.search, mode: 'insensitive' } },
+              { text: { contains: input.search, mode: 'insensitive' } },
+            ],
+          }),
+    },
     orderBy: [
       {
         createdAt: 'desc',

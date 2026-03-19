@@ -43,7 +43,7 @@ export default [
           // Запрещаем импорт всего из @ideanick/backend, кроме /input
           patterns: [
             {
-              regex: '^@ideanick/backend/(?!(.*/)?input$).+$',
+              regex: '^@ideanick/backend/(?!(.*/)?(?:input|can)$).+$',
               allowTypeImports: true,
               message: 'Импорт из бэкенда разрешен только для файлов input',
             },

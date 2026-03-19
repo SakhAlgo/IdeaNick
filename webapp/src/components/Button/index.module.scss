@@ -1,3 +1,4 @@
+@use 'sass:color';
 @import '../../styles/_vars';
 @import '../../styles/_mixins';
 
@@ -31,6 +32,31 @@
 
     .text {
       opacity: 0;
+    }
+  }
+
+  &.color-green {
+    background-color: #0a980a;
+
+    &:hover {
+      background-color: #21b821;
+    }
+
+    &:active {
+      background-color: #39d039;
+    }
+  }
+
+  &.color-red {
+    background-color: $red;
+    margin-top: 20px;
+
+    &:hover {
+      background-color: color.scale($red, $lightness: 10%);
+    }
+
+    &:active {
+      background-color: color.scale($red, $lightness: 30%);
     }
   }
 }
