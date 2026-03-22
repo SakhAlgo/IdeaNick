@@ -1,5 +1,6 @@
 import { type UseTRPCQueryResult, type UseTRPCQuerySuccessResult } from '@trpc/react-query/shared'
 import React, { useEffect } from 'react'
+import { Title } from 'react-head'
 import { useNavigate } from 'react-router-dom'
 import { ErrorPageComponent } from '../components/ErrorPageComponent'
 import { Loader } from '../components/Loader'
@@ -57,6 +58,8 @@ type PageWrapperProps<TProps extends Props, TQueryResult extends QueryResult | u
   useQuery?: () => TQueryResult
   setProps?: (setPropsProps: SetPropsProps<TQueryResult>) => TProps
   Page: React.FC<TProps>
+  title: string | ((titleProps: HelperProps<TQueryResult> & TProps) => string)
+  isTitleExact?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -73,6 +76,8 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
   checkExistsMessage,
   useQuery,
   setProps,
+  title,
+  isTitleExact = false,
   Page,
   showLoaderOnFetching = true,
 }: PageWrapperProps<TProps, TQueryResult>) => {
@@ -129,7 +134,14 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
       checkAccess: checkAccessFn,
       getAuthorizedMe,
     }) as TProps
-    return <Page {...props} />
+    const calculatedTitle = typeof title === 'function' ? title({ ...helperProps, ...props }) : title
+    const exactTitle = isTitleExact ? calculatedTitle : `${calculatedTitle} — IdeaNick`
+    return (
+      <>
+        <Title>{exactTitle}</Title>
+        <Page {...props} />
+      </>
+    )
   } catch (error) {
     if (error instanceof CheckExistsError) {
       return <NotFoundPage title={checkExistsTitle} message={error.message || checkExistsMessage} />
