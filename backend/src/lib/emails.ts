@@ -5,6 +5,7 @@ import fg from 'fast-glob'
 import Handlebars from 'handlebars'
 import _ from 'lodash'
 import { env } from './env'
+import { sendEmailThroughResend } from './resend'
 
 const getHbrTemplates = _.memoize(async () => {
   const htmlPathsPattern = path.resolve(__dirname, '../emails/dist/**/*.html')
@@ -37,17 +38,18 @@ const sendEmail = async ({
   templateVariables?: Record<string, string>
 }) => {
   try {
-    const fullTemplateVaraibles = {
+    const fullTemplateVariables = {
       ...templateVariables,
       homeUrl: env.WEBAPP_URL,
     }
-    const html = await getEmailHtml(templateName, fullTemplateVaraibles)
+    const html = await getEmailHtml(templateName, fullTemplateVariables)
+    const { loggableResponse } = await sendEmailThroughResend({ to, html, subject })
+
     console.info('sendEmail', {
       to,
-      subject,
       templateName,
-      fullTemplateVaraibles,
-      html,
+      fullTemplateVariables,
+      response: loggableResponse,
     })
     return { ok: true }
   } catch (error) {
