@@ -6,7 +6,6 @@
   },
   "compilerOptions": {
     "allowJs": true,
-    // "iterableTypeDeclarations": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSources": true,
@@ -25,5 +24,6 @@
     "target": "ES2022"
   },
 
-  "include": ["./src/**/*.ts", "./prisma.config.ts"]
+  "include": ["./src/**/*.ts", "./prisma.config.ts"],
+  "references": [{ "path": "../shared" }]
 }

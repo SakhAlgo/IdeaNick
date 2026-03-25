@@ -24,6 +24,8 @@
     "prettify": "prettier --log-level warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"
   },
   "dependencies": {
+    "@ideanick/shared": "workspace:*",
+    "@ideanick/webapp": "workspace:*",
     "@prisma/adapter-pg": "^7.4.2",
     "@trpc/server": "^11.10.0",
     "add": "^2.0.6",

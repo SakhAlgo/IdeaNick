@@ -1,0 +1,14 @@
+{
+  "name": "@ideanick/shared",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./routes": "./src/routes.ts"
+  },
+  "scripts": {
+    "types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  }
+}
