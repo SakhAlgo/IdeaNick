@@ -21,6 +21,15 @@ const makeRequestToResend = async ({
   originalResponse?: AxiosResponse
   loggableResponse: Pick<AxiosResponse, 'status' | 'statusText' | 'data'>
 }> => {
+  if (!env.EMAIL_SERVICE_API_KEY) {
+    return {
+      loggableResponse: {
+        status: 200,
+        statusText: 'OK',
+        data: { message: 'BREVO_API_KEY is not set' },
+      },
+    }
+  }
   const response = await axios.post<ResendResponse>('https://api.resend.com/emails', params, {
     headers: {
       Authorization: `Bearer ${env.EMAIL_SERVICE_API_KEY}`,
