@@ -31,6 +31,7 @@
     "add": "^2.0.6",
     "axios": "^1.13.6",
     "cors": "^2.8.6",
+    "cron": "^4.4.0",
     "express": "^5.2.1",
     "fast-glob": "^3.3.3",
     "handlebars": "^4.7.8",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@prisma/client": "^7.4.2",
     "@types/cors": "^2.8.19",
+    "@types/cron": "^2.4.3",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/lodash": "^4.17.24",
