@@ -40,6 +40,7 @@
     "node": "^22.22.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
+    "react-router-dom": "^7.13.0",
     "superjson": "^2.2.6",
     "trpc-ui": "^1.0.15",
     "zod": "^3.25.76"
