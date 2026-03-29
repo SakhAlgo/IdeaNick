@@ -1,10 +1,10 @@
 import { promises as fs } from 'fs'
 import path from 'path'
-import { getNewIdeaRoute } from '@ideanick/shared/routes'
 import { type Idea, type User } from '@prisma/client'
 import fg from 'fast-glob'
 import Handlebars from 'handlebars'
 import _ from 'lodash'
+import { getNewIdeaRoute, getViewIdeaRoute } from '../lib/routes'
 import { env } from './env'
 import { sendEmailThroughResend } from './resend'
 
@@ -36,7 +36,7 @@ const sendEmail = async ({
   to: string
   subject: string
   templateName: string
-  templateVariables?: Record<string, string>
+  templateVariables?: Record<string, string | Array<Record<string, string>>>
 }) => {
   try {
     const fullTemplateVariables = {
@@ -78,6 +78,23 @@ export const sendIdeaBlockedEmail = async ({ user, idea }: { user: Pick<User, 'e
     templateName: 'ideaBlocked',
     templateVariables: {
       ideaNick: idea.nick,
+    },
+  })
+}
+
+export const sendMostLikedIdeasEmail = async ({
+  user,
+  ideas,
+}: {
+  user: Pick<User, 'email'>
+  ideas: Array<Pick<Idea, 'nick' | 'name'>>
+}) => {
+  return await sendEmail({
+    to: user.email,
+    subject: 'Most Liked Ideas!',
+    templateName: 'mostLikedIdeas',
+    templateVariables: {
+      ideas: ideas.map((idea) => ({ name: idea.name, url: getViewIdeaRoute({ abs: true, ideaNick: idea.nick }) })),
     },
   })
 }
