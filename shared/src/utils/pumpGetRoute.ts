@@ -1,8 +1,7 @@
 import { useParams as useReactRouterParams } from 'react-router-dom'
 
-// eslint-disable-next-line node/no-process-env
 const baseUrl = process.env.VITE_WEBAPP_URL || process.env.WEBAPP_URL
-
+console.info(process.env.VITE_WEBAPP_URL, process.env.WEBAPP_URL)
 type PumpedGetRouteInputBase = {
   abs?: boolean
 }
@@ -24,7 +23,7 @@ function pumpGetRoute(getRoute: () => string): {
   useParams: () => {}
   definition: string
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 function pumpGetRoute(routeParamsOrGetRoute?: any, maybeGetRoute?: any) {
   const routeParamsDefinition = typeof routeParamsOrGetRoute === 'function' ? {} : routeParamsOrGetRoute
   const getRoute = typeof routeParamsOrGetRoute === 'function' ? routeParamsOrGetRoute : maybeGetRoute
@@ -40,7 +39,7 @@ function pumpGetRoute(routeParamsOrGetRoute?: any, maybeGetRoute?: any) {
   }
   pumpedGetRoute.placeholders = placeholders
   pumpedGetRoute.definition = definition
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   pumpedGetRoute.useParams = useReactRouterParams as any
   return pumpedGetRoute
 }
