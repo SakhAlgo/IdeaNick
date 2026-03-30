@@ -1,18 +1,8 @@
 {
+  "extends": "../backend/tsconfig.json",
   "compilerOptions": {
-    "composite": true,
-    "target": "ES2022",
-    "lib": ["ES2022"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "rootDir": ".",
-    "outDir": "./node_modules/.tmp/dist"
+    "types": ["node"]
   },
   "include": ["src/**/*"]
 }
