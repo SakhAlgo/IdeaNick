@@ -47,7 +47,7 @@ const sendEmail = async ({
     const html = await getEmailHtml(templateName, fullTemplateVariables)
     const { loggableResponse } = await sendEmailThroughResend({ to, html, subject })
 
-    logger.info('sendEmail', {
+    logger.info('email', 'sendEmail', {
       to,
       templateName,
       fullTemplateVariables,
@@ -55,7 +55,10 @@ const sendEmail = async ({
     })
     return { ok: true }
   } catch (error) {
-    logger.error(error)
+    logger.error('email', error, {
+      to,
+      templateName,
+    })
     return { ok: false }
   }
 }
