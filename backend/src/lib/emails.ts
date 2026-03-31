@@ -6,6 +6,7 @@ import Handlebars from 'handlebars'
 import _ from 'lodash'
 import { getNewIdeaRoute, getViewIdeaRoute } from '../lib/routes'
 import { env } from './env'
+import { logger } from './logger'
 import { sendEmailThroughResend } from './resend'
 
 const getHbrTemplates = _.memoize(async () => {
@@ -46,7 +47,7 @@ const sendEmail = async ({
     const html = await getEmailHtml(templateName, fullTemplateVariables)
     const { loggableResponse } = await sendEmailThroughResend({ to, html, subject })
 
-    console.info('sendEmail', {
+    logger.info('sendEmail', {
       to,
       templateName,
       fullTemplateVariables,
@@ -54,7 +55,7 @@ const sendEmail = async ({
     })
     return { ok: true }
   } catch (error) {
-    console.error(error)
+    logger.error(error)
     return { ok: false }
   }
 }

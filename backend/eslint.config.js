@@ -30,6 +30,7 @@ export default [
     rules: {
       curly: ['error', 'all'],
       'node/no-process-env': 'error',
+      'no-console': ['error', { allow: ['info', 'error', 'warn'] }],
     },
   },
 ]
