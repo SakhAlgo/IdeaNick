@@ -10,6 +10,7 @@ export default defineConfig({
     path: 'prisma/migrations',
   },
   datasource: {
+    // eslint-disable-next-line node/no-process-env
     url: process.env.DATABASE_URL,
   },
 })

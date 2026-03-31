@@ -1,9 +1,9 @@
-// eslint-disable-next-line import/order
-import { env } from './lib/env'
 import cors from 'cors'
 import express from 'express'
 import { applyCron } from './lib/cron'
 import { AppContext, createAppContext } from './lib/ctx'
+import { env } from './lib/env'
+import { logger } from './lib/logger'
 import { applyPassportToExpressApp } from './lib/passport'
 import { applyTrpcToExpressApp } from './lib/trpc'
 import { trpcRouter } from './router'
@@ -23,10 +23,10 @@ void (async () => {
     await applyTrpcToExpressApp(expressApp, ctx, trpcRouter)
     applyCron(ctx)
     expressApp.listen(env.PORT, () => {
-      console.info('Listening at https://localhost:' + env.PORT)
+      logger.info('Listening at https://localhost:' + env.PORT)
     })
   } catch (e) {
-    console.error(e)
+    logger.error(e)
     await ctx?.stop()
   }
 })()

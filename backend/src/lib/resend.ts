@@ -1,6 +1,7 @@
 import axios, { type AxiosResponse } from 'axios'
 import _ from 'lodash'
 import { env } from './env'
+import { logger } from './logger'
 
 type ResendResponse = {
   id: string
@@ -37,7 +38,7 @@ const makeRequestToResend = async ({
     },
     validateStatus: () => true, // не бросать исключение на 4xx/5xx
   })
-  console.info('Resend raw response:', JSON.stringify(response.data, null, 2))
+  logger.info('Resend raw response:', JSON.stringify(response.data, null, 2))
   if (response.status < 200 || response.status >= 300) {
     const error = response.data as unknown as ResendErrorResponse
     throw new Error(`Resend API error [${response.status}]: ${error.message}`)
