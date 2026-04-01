@@ -27,7 +27,7 @@ const makeRequestToResend = async ({
       loggableResponse: {
         status: 200,
         statusText: 'OK',
-        data: { message: 'BREVO_API_KEY is not set' },
+        data: { message: 'EMAIL_SERVICE_API_KEY is not set' },
       },
     }
   }
