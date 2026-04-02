@@ -1,4 +1,5 @@
 import cors from 'cors'
+import debug from 'debug'
 import express from 'express'
 import { applyCron } from './lib/cron'
 import { AppContext, createAppContext } from './lib/ctx'
@@ -8,6 +9,8 @@ import { applyPassportToExpressApp } from './lib/passport'
 import { applyTrpcToExpressApp } from './lib/trpc'
 import { trpcRouter } from './router'
 import { presetDb } from './scripts/presetBD'
+
+debug.enable(env.DEBUG)
 
 void (async () => {
   let ctx: AppContext | null = null
