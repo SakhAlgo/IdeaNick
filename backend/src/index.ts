@@ -19,12 +19,21 @@ void (async () => {
     await presetDb(ctx)
     const expressApp = express()
     expressApp.use(cors())
+
     expressApp.get('/ping', (req, res) => {
       res.send('pong')
     })
     applyPassportToExpressApp(expressApp, ctx)
     await applyTrpcToExpressApp(expressApp, ctx, trpcRouter)
     applyCron(ctx)
+    expressApp.use((error: unknown, req: express.Request, res: express.Response, next: express.NextFunction) => {
+      logger.error('express', error)
+      if (res.headersSent) {
+        next(error)
+        return
+      }
+      res.status(500).send('Internal server error')
+    })
     expressApp.listen(env.PORT, () => {
       logger.info('express', 'Listening at https://localhost:' + env.PORT)
     })
