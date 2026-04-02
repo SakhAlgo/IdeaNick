@@ -1,4 +1,5 @@
 import { EOL } from 'os'
+import debug from 'debug'
 import _ from 'lodash'
 import { createColors } from 'picocolors'
 import { serializeError } from 'serialize-error'
@@ -6,8 +7,8 @@ import { MESSAGE } from 'triple-beam'
 import winston from 'winston'
 import * as yaml from 'yaml'
 import { env } from './env'
-// Принудительно включаем цвета
 
+// Принудительно включаем цвета
 const pc = createColors(true)
 
 type LogData = {
@@ -72,11 +73,17 @@ export const winstonLogger = winston.createLogger({
 export const logger = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   info: (logType: string, message: string, meta?: Record<string, any>) => {
+    if (!debug.enabled(`ideanick:${logType}`)) {
+      return
+    }
     winstonLogger.info(message, { logType, ...meta })
   },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   error: (logType: string, error: unknown, meta?: Record<string, any>) => {
     const serializedError = serializeError(error)
+    if (!debug.enabled(`ideanick:${logType}`)) {
+      return
+    }
     winstonLogger.error(typeof serializedError.message === 'string' ? serializedError.message : 'Unknown error', {
       logType,
       error,
