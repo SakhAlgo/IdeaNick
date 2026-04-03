@@ -1,7 +1,7 @@
 import { useParams as useReactRouterParams } from 'react-router-dom'
 
 const baseUrl = process.env.VITE_WEBAPP_URL || process.env.WEBAPP_URL
-console.info(process.env.VITE_WEBAPP_URL, process.env.WEBAPP_URL)
+// console.info(process.env.VITE_WEBAPP_URL, process.env.WEBAPP_URL)
 type PumpedGetRouteInputBase = {
   abs?: boolean
 }
