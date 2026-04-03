@@ -10,7 +10,7 @@ export const NotAuthRouteTracker = () => {
   useEffect(() => {
     const authRoutes = [getSignUpRoute(), getSignInRoute(), getSignOutRoute()]
     const isAuthRoute = authRoutes.includes(pathname)
-    console.info('NotAuthRouteTracker', { pathname, isAuthRoute })
+    // console.info('NotAuthRouteTracker', { pathname, isAuthRoute })
     if (!isAuthRoute) {
       lastVisistedNotAuthRouteStore.set(pathname)
     }

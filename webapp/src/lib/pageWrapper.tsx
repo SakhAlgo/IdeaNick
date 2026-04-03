@@ -91,7 +91,7 @@ const PageWrapper = <TProps extends Props = {}, TQueryResult extends QueryResult
 
   useEffect(() => {
     if (redirectNeeded) {
-      console.info(lastVisistedNotAuthRoute)
+      // console.info(lastVisistedNotAuthRoute)
       navigate(lastVisistedNotAuthRoute, { replace: true })
     }
   }, [redirectNeeded, navigate, lastVisistedNotAuthRoute])
