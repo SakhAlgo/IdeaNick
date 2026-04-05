@@ -21,6 +21,7 @@ const General = ({ me }: { me: NonNullable<TrpcRouterOutput['getMe']['me']> }) =
     },
     validationSchema: zUpdateProfileTrpcInput,
     onSubmit: async (values) => {
+      // throw new Error('Test error handling')
       const updatedMe = await updateProfile.mutateAsync(values)
       trpcUtils.getMe.setData(undefined, { me: updatedMe })
     },

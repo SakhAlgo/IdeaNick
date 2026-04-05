@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import { NotAuthRouteTracker } from './components/NotAuthRouteTracker'
 import { AppContextProvider } from './lib/ctx'
 import * as routes from './lib/routes'
+import { SentryUser } from './lib/sentry'
 import { TrpcProvider } from './lib/trpc'
 import { EditProfilePage } from './pages/auth/EditProfilePage'
 import { SignInPage } from './pages/auth/SignInPage'
@@ -18,11 +19,13 @@ import './styles/global.scss'
 import { NotFoundPage } from './pages/other/NotFoundPage'
 
 export const App = () => {
+  // throw new Error('App is not used anymore, use AppWithSentry instead')
   return (
     <HeadProvider>
       <TrpcProvider>
         <AppContextProvider>
           <BrowserRouter>
+            <SentryUser />
             <NotAuthRouteTracker />
             <Routes>
               <Route path={routes.getSignOutRoute.definition} element={<SignOutPage />} />
