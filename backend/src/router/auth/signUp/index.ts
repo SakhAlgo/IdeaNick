@@ -1,4 +1,5 @@
 import { sendWelcomeEmail } from '../../../lib/emails'
+import { ExpectedError } from '../../../lib/error'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
 import { signJWT } from '../../../utils/signJWT'
@@ -11,7 +12,7 @@ export const signUpTrpcRoute = trpcLoggedProcedure.input(zSignUpTrpcInput).mutat
     },
   })
   if (exUserNick) {
-    throw new Error('Nick already exists')
+    throw new ExpectedError('Wrong nick or password')
   }
   const exUserWithEmail = await ctx.prisma.user.findUnique({
     where: {

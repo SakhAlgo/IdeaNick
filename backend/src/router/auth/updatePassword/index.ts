@@ -1,4 +1,5 @@
 import { trpcLoggedProcedure } from '../../../../src/lib/trpc'
+import { ExpectedError } from '../../../lib/error'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
 import { zUpdatePasswordTrpcInput } from './input'
 
@@ -9,7 +10,7 @@ export const updatePasswordTrpcRoute = trpcLoggedProcedure
       throw new Error('UNAUTHORIZED')
     }
     if (ctx.me.password !== getPasswordHash(input.oldPassword)) {
-      throw new Error('Wrong old password')
+      throw new ExpectedError('Wrong old password')
     }
     const updatedMe = await ctx.prisma.user.update({
       where: {

@@ -1,3 +1,4 @@
+import { ExpectedError } from '../../../lib/error'
 import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { zCreateIdeaTrpcInput } from './input'
 
@@ -11,7 +12,7 @@ export const createIdeaTrpcRoute = trpcLoggedProcedure.input(zCreateIdeaTrpcInpu
     },
   })
   if (exIdea) {
-    throw new Error('Nick already exists')
+    throw new ExpectedError('Idea is blocked by administrator')
   }
   await ctx.prisma.idea.create({
     data: { ...input, authorId: ctx.me.id },
