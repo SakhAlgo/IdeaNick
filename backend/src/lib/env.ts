@@ -1,5 +1,5 @@
 import { validateHeaderName } from 'http'
-import { zEnvNonemptyTrimmed } from '@ideanick/shared/zod'
+import { zEnvNonemptyTrimmed, zEnvNonemptyTrimmedRequiredOnNotLocal } from '@ideanick/shared/zod'
 import * as dotenv from 'dotenv'
 import { z } from 'zod'
 
@@ -23,6 +23,8 @@ const zEnv = z.object({
   FROM_EMAIL_NAME: zNoneemptyTrimmed,
   FROM_EMAIL_ADDRESS: zNoneemptyTrimmed.email(),
   DEBUG: zEnvNonemptyTrimmed,
+  BACKEND_SENTRY_DSN: zEnvNonemptyTrimmedRequiredOnNotLocal,
+  SOURCE_VERSION: zEnvNonemptyTrimmedRequiredOnNotLocal,
 })
 
 // eslint-disable-next-line node/no-process-env

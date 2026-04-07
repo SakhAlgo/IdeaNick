@@ -1,5 +1,5 @@
-import { trpcLoggedProcedure } from '../../../../src/lib/trpc'
 import { ExpectedError } from '../../../lib/error'
+import { trpcLoggedProcedure } from '../../../lib/trpc'
 import { getPasswordHash } from '../../../utils/getPasswordHash'
 import { zUpdatePasswordTrpcInput } from './input'
 
@@ -20,6 +20,9 @@ export const updatePasswordTrpcRoute = trpcLoggedProcedure
         password: getPasswordHash(input.newPassword),
       },
     })
+    if (!updatedMe) {
+      throw new Error('Failed to update password')
+    }
     ctx.me = updatedMe
     return true
   })

@@ -3,10 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./routes": "./src/routes.ts",
-    "./zod": "./src/zod.ts"
+    "./routes": {
+      "import": "./dist/esm/routes.js",
+      "require": "./dist/routes.js",
+      "types": "./dist/routes.d.ts"
+    },
+    "./zod": {
+      "import": "./dist/esm/zod.js",
+      "require": "./dist/zod.js",
+      "types": "./dist/zod.d.ts"
+    }
   },
   "scripts": {
+    "build": "tsc --build ./tsconfig.json ./tsconfig.esm.json",
     "types": "tsc --noEmit --project ./tsconfig.json",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts .",
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"

@@ -4,6 +4,7 @@ import express from 'express'
 import { applyCron } from './lib/cron'
 import { AppContext, createAppContext } from './lib/ctx'
 import { env } from './lib/env'
+// import { ExpectedError } from './lib/error'
 import { logger } from './lib/logger'
 import { applyPassportToExpressApp } from './lib/passport'
 import { applyTrpcToExpressApp } from './lib/trpc'
@@ -37,8 +38,9 @@ void (async () => {
     expressApp.listen(env.PORT, () => {
       logger.info('express', 'Listening at https://localhost:' + env.PORT)
     })
+    throw new Error('Test error 2')
   } catch (e) {
-    logger.error('app', e)
+    logger.error('app', e as Error)
     await ctx?.stop()
   }
 })()

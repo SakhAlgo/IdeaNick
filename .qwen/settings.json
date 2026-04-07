@@ -1,6 +1,6 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm *)", "Bash(grep *)"]
+    "allow": ["Bash(pnpm *)", "Bash(grep *)", "Bash(find *)", "Bash(npx *)", "Bash(rm *)"]
   },
   "$version": 3
 }

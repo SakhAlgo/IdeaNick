@@ -17,13 +17,13 @@
     "noImplicitAny": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "rootDir": ".",
+    "rootDir": "./src",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "ES2022"
   },
 
-  "include": ["./src/**/*.ts", "./prisma.config.ts"]
+  "include": ["./src/**/*.ts"]
   // "references": [{ "path": "../shared" }]
 }

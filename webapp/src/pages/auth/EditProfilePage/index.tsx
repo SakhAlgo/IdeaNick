@@ -24,7 +24,7 @@ const General = ({ me }: { me: NonNullable<TrpcRouterOutput['getMe']['me']> }) =
       // throw new Error('Test error handling')
       const updatedMe = await updateProfile.mutateAsync(values)
       trpcUtils.getMe.setData(undefined, { me: updatedMe })
-      throw new Error('My error 2')
+      // throw new Error('My error 2')
     },
     successMessage: 'Profile updated',
     resetOnSuccess: false,
