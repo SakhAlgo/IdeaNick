@@ -45,6 +45,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@sentry/vite-plugin": "^5.1.1",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.3.0",
