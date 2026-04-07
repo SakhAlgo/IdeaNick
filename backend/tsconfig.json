@@ -20,6 +20,7 @@
     "rootDir": "./src",
     "skipLibCheck": true,
     "sourceMap": true,
+    "sourceRoot": "/",
     "strict": true,
     "target": "ES2022"
   },

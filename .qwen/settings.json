@@ -1,6 +1,14 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm *)", "Bash(grep *)", "Bash(find *)", "Bash(npx *)", "Bash(rm *)", "Bash(git *)"]
+    "allow": [
+      "Bash(pnpm *)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(npx *)",
+      "Bash(rm *)",
+      "Bash(git *)",
+      "Bash(sentry-cli *)"
+    ]
   },
   "$version": 3
 }

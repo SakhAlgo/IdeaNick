@@ -38,7 +38,7 @@ void (async () => {
     expressApp.listen(env.PORT, () => {
       logger.info('express', 'Listening at https://localhost:' + env.PORT)
     })
-    throw new Error('Test error 2')
+    throw new Error('Test error 3')
   } catch (e) {
     logger.error('app', e as Error)
     await ctx?.stop()
