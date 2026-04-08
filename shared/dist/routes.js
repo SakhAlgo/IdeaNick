@@ -24,7 +24,8 @@ exports.getNewIdeaRoute =
 // export const editIdeaRouteParams = getRouteParams({ ideaNick: true })
 // export type EditIdeaRouteParams = typeof viewIdeaRouteParams
 // export const getEditIdeaRoute = ({ ideaNick }: EditIdeaRouteParams) => `/ideas/${ideaNick}/edit`
-const pumpGetRoute_js_1 = require('./utils/pumpGetRoute.js')
+const 
+pumpGetRoute_js_1 = require('./utils/pumpGetRoute.js')
 exports.getSignUpRoute = (0, pumpGetRoute_js_1.pgr)(() => '/sign-up')
 exports.getSignInRoute = (0, pumpGetRoute_js_1.pgr)(() => '/sign-in')
 exports.getSignOutRoute = (0, pumpGetRoute_js_1.pgr)(() => '/sign-out')

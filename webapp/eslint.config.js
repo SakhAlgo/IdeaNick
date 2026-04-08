@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: ['dist', 'node_modules', 'coverage', 'eslint.config.js'] },
+  { ignores: ['dist', 'node_modules', 'coverage', '**/*.config.js'] },
 
   ...baseConfig,
 
@@ -54,7 +54,7 @@ export default [
   },
 
   {
-    files: ['vite.config.ts', '*.config.{ts,js}'],
+    files: ['vite.config.ts'],
     languageOptions: {
       parserOptions: {
         project: ['tsconfig.node.json'],

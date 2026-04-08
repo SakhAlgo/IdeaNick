@@ -15,6 +15,7 @@
     }
   },
   "scripts": {
+    "test": "jest",
     "build": "tsc --build ./tsconfig.json ./tsconfig.esm.json",
     "types": "tsc --noEmit --project ./tsconfig.json",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts .",

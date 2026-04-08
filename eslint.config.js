@@ -1,6 +1,7 @@
 import pluginJs from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import pluginImport from 'eslint-plugin-import'
+import pluginJest from 'eslint-plugin-jest'
 import prettierPlugin from 'eslint-plugin-prettier'
 import eslintReact from 'eslint-plugin-react'
 import pluginReact from 'eslint-plugin-react'
@@ -14,7 +15,7 @@ export default [
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
   },
   {
-    ignores: ['node_modules', 'dist'],
+    ignores: ['node_modules', 'dist', '**/*.config.js'],
   },
   {
     plugins: {
@@ -24,6 +25,7 @@ export default [
       // 'react-refresh': eslintReactRefresh,
       prettier: prettierPlugin,
       import: pluginImport,
+      jest: pluginJest,
     },
   },
   {
