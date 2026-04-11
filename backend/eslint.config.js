@@ -1,5 +1,6 @@
 import baseConfig from '../eslint.config.js'
 import pluginNode from 'eslint-plugin-node'
+import pluginImport from 'eslint-plugin-import'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -11,6 +12,7 @@ export default [
   {
     plugins: {
       node: pluginNode,
+      import: pluginImport,
     },
   },
   {
@@ -19,6 +21,13 @@ export default [
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: __dirname,
+      },
+    },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.ts', '.tsx'],
+        },
       },
     },
   },
@@ -30,7 +39,19 @@ export default [
     rules: {
       curly: ['error', 'all'],
       'node/no-process-env': 'error',
-      'no-console': ['error', { allow: ['info', 'error', 'warn'] }],
+      'no-console': 'error',
+      'import/no-restricted-paths': [
+        'error',
+        {
+          zones: [
+            {
+              target: './src/**/!(*.integration.test.ts)',
+              from: './src/test',
+              message: 'Import something from test dir only inside integration tests',
+            },
+          ],
+        },
+      ],
     },
   },
 ]
