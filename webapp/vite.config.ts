@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: +env.PORT,
+      host: true,
     },
     preview: {
       port: +env.PORT,

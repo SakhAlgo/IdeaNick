@@ -22,7 +22,7 @@ const makeRequestToResend = async ({
   originalResponse?: AxiosResponse
   loggableResponse: Pick<AxiosResponse, 'status' | 'statusText' | 'data'>
 }> => {
-  if (!env.EMAIL_SERVICE_API_KEY) {
+  if (!env.EMAIL_SERVICE_API_KEY || env.NODE_ENV === 'test') {
     return {
       loggableResponse: {
         status: 200,

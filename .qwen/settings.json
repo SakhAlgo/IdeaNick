@@ -7,7 +7,18 @@
       "Bash(npx *)",
       "Bash(rm *)",
       "Bash(git *)",
-      "Bash(sentry-cli *)"
+      "Bash(sentry-cli *)",
+      "Bash(ls *)",
+      "Bash(curl *)",
+      "Bash(pkill *)",
+      "Bash(sleep *)",
+      "Bash(ss *)",
+      "Bash(kill *)",
+      "Bash(true)",
+      "Bash(pg_isready *)",
+      "Bash(gsettings *)",
+      "Bash(sudo *)",
+      "Bash(nohup *)"
     ]
   },
   "$version": 3

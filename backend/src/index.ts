@@ -11,7 +11,10 @@ import { applyTrpcToExpressApp } from './lib/trpc'
 import { trpcRouter } from './router'
 import { presetDb } from './scripts/presetBD'
 
-debug.enable(env.DEBUG)
+if (env.DEBUG) {
+  debug.enable(env.DEBUG)
+}
+// debug.enable(env.DEBUG)
 
 void (async () => {
   let ctx: AppContext | null = null
@@ -38,7 +41,6 @@ void (async () => {
     expressApp.listen(env.PORT, () => {
       logger.info('express', 'Listening at https://localhost:' + env.PORT)
     })
-    throw new Error('Test error 3')
   } catch (e) {
     logger.error('app', e as Error)
     await ctx?.stop()
