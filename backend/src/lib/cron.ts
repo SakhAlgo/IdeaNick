@@ -10,7 +10,7 @@ export const applyCron = (ctx: AppContext) => {
     '0 10 1 * *', // At 10:00 on day-of-month 1
     // '* * * * * *', // At 10:00 on day-of-month 1
     () => {
-      notifyAboutMostLikedIdeas(ctx).catch((error) => logger.error('Cron job error', error))
+      notifyAboutMostLikedIdeas({ ctx }).catch((error) => logger.error('Cron job error', error))
     },
     null, // onComplete
     true // start right now

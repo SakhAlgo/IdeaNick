@@ -1,3 +1,6 @@
+import '../lib/resend.mock'
+import '../lib/emails/utils.mock'
+import '../lib/sentry.mock'
 import { type Idea, type User } from '@prisma/client'
 import _ from 'lodash'
 import { createAppContext } from '../lib/ctx'
@@ -33,7 +36,7 @@ export const withoutNoize = (input: any): any => {
     if (_.isObject(value) && !_.isArray(value)) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return _.entries(value).reduce((acc, [objectKey, objectValue]: [string, any]) => {
-        if ([/^id$/, /Id$/, /At$/].some((regex) => regex.test(objectKey))) {
+        if ([/^id$/, /Id$/, /At$/, /^url$/].some((regex) => regex.test(objectKey))) {
           return acc
         }
         return {

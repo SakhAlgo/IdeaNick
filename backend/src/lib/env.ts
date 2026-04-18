@@ -25,7 +25,7 @@ const findEnvFilePath = (dir: string): string | null => {
 }
 const envFilePath = findEnvFilePath(__dirname)
 if (envFilePath) {
-  dotenv.config({ path: envFilePath, override: true })
+  //
   // eslint-disable-next-line node/no-process-env
   dotenv.config({ path: `${envFilePath}.${process.env.NODE_ENV}`, override: true })
 }

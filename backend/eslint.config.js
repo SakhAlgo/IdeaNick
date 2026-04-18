@@ -52,6 +52,24 @@ export default [
           ],
         },
       ],
+      'import/order': [
+        'error',
+        {
+          groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+          pathGroups: [
+            {
+              pattern: '{.,..}/**/test/integration',
+              group: 'builtin',
+              position: 'before',
+            },
+          ],
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: false,
+            orderImportKind: 'asc',
+          },
+        },
+      ],
     },
   },
 ]
