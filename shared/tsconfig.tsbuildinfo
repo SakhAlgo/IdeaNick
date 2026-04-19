@@ -1,1 +1,1 @@
-{"root":["./src/routes.ts","./src/zod.ts","./src/utils/pumpGetRoute.ts"],"version":"5.9.3"}
+{"root":["./src/omit.ts","./src/pick.ts","./src/routes.ts","./src/zod.ts","./src/utils/pumpGetRoute.ts","./src/utils/pumpGetRoute.unit.test.ts"],"version":"5.9.3"}

@@ -12,6 +12,16 @@
       "import": "./dist/esm/zod.js",
       "require": "./dist/zod.js",
       "types": "./dist/zod.d.ts"
+    },
+    "./pick": {
+      "import": "./dist/esm/pick.js",
+      "require": "./dist/pick.js",
+      "types": "./dist/pick.d.ts"
+    },
+    "./omit": {
+      "import": "./dist/esm/omit.js",
+      "require": "./dist/omit.js",
+      "types": "./dist/omit.d.ts"
     }
   },
   "scripts": {
@@ -22,11 +32,13 @@
     "prettify": "prettier --loglevel warn --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
-    "@types/node": "20.3.1"
+    "@types/lodash": "^4.17.24",
+    "@types/node": "20.3.1",
+    "typescript": "~5.9.3"
   },
   "dependencies": {
-    "zod": "^3.25.76",
-    "react-router-dom": "^7.13.0"
+    "lodash": "^4.17.23",
+    "react-router-dom": "^7.13.0",
+    "zod": "^3.25.76"
   }
 }

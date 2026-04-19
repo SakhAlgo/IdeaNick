@@ -1,5 +1,5 @@
+import { pick } from '@ideanick/shared/pick'
 import axios, { type AxiosResponse } from 'axios'
-import _ from 'lodash'
 import { env } from './env'
 import { logger } from './logger'
 
@@ -46,7 +46,7 @@ const makeRequestToResend = async ({
 
   return {
     originalResponse: response,
-    loggableResponse: _.pick(response, ['status', 'statusText', 'data']),
+    loggableResponse: pick(response, ['status', 'statusText', 'data']),
   }
 }
 
