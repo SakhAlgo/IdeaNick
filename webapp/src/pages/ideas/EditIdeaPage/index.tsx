@@ -11,6 +11,7 @@ import { Input } from '../../../components/Input'
 import { Segment } from '../../../components/Segment'
 import { TextArea } from '../../../components/TextArea'
 // import { useMe } from '../../lib/ctx'
+import { UploadsToCloudinary } from '../../../components/UploadsToCloudinary'
 import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
 import { getEditIdeaRoute, getViewIdeaRoute } from '../../../lib/routes'
@@ -36,7 +37,7 @@ export const EditIdeaPage = withPageWrapper({
   const navigate = useNavigate()
   const updateIdea = trpc.updateIdea.useMutation()
   const { formik, buttonProps, alertProps } = useForm({
-    initialValues: pick(idea, ['name', 'nick', 'description', 'text']),
+    initialValues: pick(idea, ['name', 'nick', 'description', 'text', 'images']),
     validationSchema: zUpdateIdeaTrpcInput.omit({ ideaId: true }),
     onSubmit: async (values) => {
       await updateIdea.mutateAsync({ ideaId: idea.id, ...values })
@@ -54,6 +55,7 @@ export const EditIdeaPage = withPageWrapper({
           <Input label="Nick" name="nick" formik={formik} />
           <Input label="Description" name="description" maxWidth={500} formik={formik} />
           <TextArea label="Text" name="text" formik={formik} />
+          <UploadsToCloudinary label="Images" name="images" type="image" preset="preview" formik={formik} />
           <Alert {...alertProps} />
           <Button {...buttonProps}>Update Idea</Button>
         </FormItems>

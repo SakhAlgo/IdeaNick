@@ -16,7 +16,7 @@ export const updateIdeaTrpcRoute = trpcLoggedProcedure.input(zUpdateIdeaTrpcInpu
   if (!idea) {
     throw new Error('NOT_FOUND')
   }
-  if (canEditIdea(ctx.me, idea)) {
+  if (!canEditIdea(ctx.me, idea)) {
     throw new Error('NOT_YOUR_IDEA')
   }
   if (idea.nick !== input.nick) {

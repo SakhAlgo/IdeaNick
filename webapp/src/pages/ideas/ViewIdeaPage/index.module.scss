@@ -1,6 +1,10 @@
 @import '../../../styles/_vars';
 @import '../../../styles/_mixins';
 
+.gallery {
+  margin: 10px 0;
+}
+
 .createdAt {
   font-size: 12px;
   margin-bottom: 10px;
