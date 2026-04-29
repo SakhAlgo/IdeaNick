@@ -1,0 +1,32 @@
+const cloudinaryCloudName = process.env.VITE_CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME
+const cloudinaryUrl = `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload`
+export const cloudinaryUploadTypes = {
+  avatar: {
+    folder: 'avatars',
+    transformation: 'w_400,h_400,c_fill',
+    format: 'png',
+    presets: {
+      small: 'w_200,h_200,c_fill',
+      big: 'w_400,h_400,c_fill',
+    },
+  },
+  image: {
+    folder: 'images',
+    transformation: 'w_1000,h_1000,c_limit',
+    format: 'jpg',
+    presets: {
+      preview: 'w_200,h_200,c_fit,q_80',
+      large: 'w_1000,h_1000,c_limit,q_80',
+    },
+  },
+}
+export const getCloudinaryUploadUrl = (publicId, typeName, presetName) => {
+  const type = cloudinaryUploadTypes[typeName]
+  const preset = type.presets[presetName]
+  return `${cloudinaryUrl}/${preset}/${publicId}`
+}
+export const getAvatarUrl = (publicId, preset) =>
+  publicId
+    ? getCloudinaryUploadUrl(publicId, 'avatar', preset)
+    : getCloudinaryUploadUrl('v1777418732/avatars/avatar-placeholder', 'avatar', preset)
+//# sourceMappingURL=cloudinary.js.map

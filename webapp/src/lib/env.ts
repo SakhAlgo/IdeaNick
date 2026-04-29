@@ -1,4 +1,4 @@
-import { zEnvHost, zEnvNonemptyTrimmedRequiredOnNotLocal } from '@ideanick/shared/zod'
+import { zEnvHost, zEnvNonemptyTrimmed, zEnvNonemptyTrimmedRequiredOnNotLocal } from '@ideanick/shared/zod'
 import { z } from 'zod'
 
 export const zEnv = z.object({
@@ -8,6 +8,7 @@ export const zEnv = z.object({
   VITE_BACKEND_TRPC_URL: z.string().trim().min(1),
   VITE_WEBAPP_URL: z.string().trim().min(1),
   VITE_WEBAPP_SENTRY_DSN: zEnvNonemptyTrimmedRequiredOnNotLocal,
+  VITE_CLOUDINARY_CLOUD_NAME: zEnvNonemptyTrimmed,
 })
 // eslint-disable-next-line node/no-process-env
 export const env = zEnv.parse(process.env)

@@ -22,6 +22,16 @@
       "import": "./dist/esm/omit.js",
       "require": "./dist/omit.js",
       "types": "./dist/omit.d.ts"
+    },
+    "./cloudinary": {
+      "import": "./dist/esm/cloudinary.js",
+      "require": "./dist/cloudinary.js",
+      "types": "./dist/cloudinary.d.ts"
+    },
+    "./getKeysAsArray": {
+      "import": "./dist/esm/getKeysAsArray.js",
+      "require": "./dist/getKeysAsArray.js",
+      "types": "./dist/getKeysAsArray.d.ts"
     }
   },
   "scripts": {
