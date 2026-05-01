@@ -28,6 +28,11 @@
       "require": "./dist/cloudinary.js",
       "types": "./dist/cloudinary.d.ts"
     },
+    "./s3": {
+      "import": "./dist/esm/s3.js",
+      "require": "./dist/s3.js",
+      "types": "./dist/s3.d.ts"
+    },
     "./getKeysAsArray": {
       "import": "./dist/esm/getKeysAsArray.js",
       "require": "./dist/getKeysAsArray.js",

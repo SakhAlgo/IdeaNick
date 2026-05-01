@@ -1,5 +1,5 @@
-import lodashKeys from 'lodash/keys'
+import lodashKeys from 'lodash/keys';
 export const getKeysAsArray = (obj) => {
-  return lodashKeys(obj)
-}
+    return lodashKeys(obj);
+};
 //# sourceMappingURL=getKeysAsArray.js.map

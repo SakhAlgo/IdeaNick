@@ -10,6 +10,14 @@
   margin-bottom: 10px;
 }
 
+.documents {
+  margin: 10px 0;
+
+  .documentLink {
+    @include link;
+  }
+}
+
 .text {
   font-size: 14px;
 }
@@ -33,6 +41,14 @@
     font-size: 16px;
     margin-bottom: 20px;
     margin-left: 10px;
+  }
+}
+
+.certificate {
+  margin: 10px 0;
+
+  .certificateLink {
+    @include link;
   }
 }
 

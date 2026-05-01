@@ -9,6 +9,7 @@ export const zEnv = z.object({
   VITE_WEBAPP_URL: z.string().trim().min(1),
   VITE_WEBAPP_SENTRY_DSN: zEnvNonemptyTrimmedRequiredOnNotLocal,
   VITE_CLOUDINARY_CLOUD_NAME: zEnvNonemptyTrimmed,
+  VITE_S3_URL: zEnvNonemptyTrimmed,
 })
 // eslint-disable-next-line node/no-process-env
 export const env = zEnv.parse(process.env)
