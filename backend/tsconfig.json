@@ -17,7 +17,7 @@
     "noImplicitAny": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "rootDir": "./src",
+    // "rootDir": "./src",
     "skipLibCheck": true,
     "sourceMap": true,
     "sourceRoot": "/",
@@ -26,6 +26,6 @@
     "types": ["node", "jest"]
   },
 
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts", "prisma.config.ts"]
   // "references": [{ "path": "../shared" }]
 }

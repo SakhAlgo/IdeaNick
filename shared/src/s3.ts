@@ -1,4 +1,4 @@
-const s3Url = process.env.VITE_S3_URL || process.env.S3_URL
+import { sharedEnv } from './env'
 
 export const getS3UploadName = (path: string) => {
   const filename = path.replace(/^.*[\\/]/, '')
@@ -8,5 +8,5 @@ export const getS3UploadName = (path: string) => {
 }
 
 export const getS3UploadUrl = (s3Key: string) => {
-  return `${s3Url}/ideanick/${s3Key}`
+  return `${sharedEnv.S3_URL}/ideanick/${s3Key}`
 }

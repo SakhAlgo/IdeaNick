@@ -33,7 +33,7 @@ export default [
   },
 
   {
-    ignores: ['dist', 'node_modules', 'coverage', 'eslint.config.js'],
+    ignores: ['dist', 'node_modules', 'coverage', 'eslint.config.js', 'prisma.config.ts'],
   },
   {
     rules: {
@@ -58,6 +58,10 @@ export default [
           groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
           pathGroups: [
             {
+              pattern: '{.,..}/**/env',
+              group: 'builtin',
+              position: 'before',
+
               pattern: '{.,..}/**/test/integration',
               group: 'builtin',
               position: 'before',

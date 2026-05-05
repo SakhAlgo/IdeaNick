@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "jest",
+    "test": "dotenv -e .env.test -e .env jest",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
