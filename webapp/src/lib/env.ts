@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { zEnvHost, zEnvNonemptyTrimmed, zEnvNonemptyTrimmedRequiredOnNotLocal } from '@ideanick/shared/zod'
 import { z } from 'zod'
 
@@ -11,5 +12,6 @@ export const zEnv = z.object({
   VITE_CLOUDINARY_CLOUD_NAME: zEnvNonemptyTrimmed,
   VITE_S3_URL: zEnvNonemptyTrimmed,
 })
+const envFromBackend = (window as any).webappEnvFromBackend
 // eslint-disable-next-line node/no-process-env
-export const env = zEnv.parse(process.env)
+export const env = zEnv.parse(envFromBackend?.replaceMeWithPublicEnv ? process.env : envFromBackend)

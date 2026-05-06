@@ -37,6 +37,11 @@
       "import": "./dist/esm/getKeysAsArray.js",
       "require": "./dist/getKeysAsArray.js",
       "types": "./dist/getKeysAsArray.d.ts"
+    },
+    "./parsePublicEnv": {
+      "import": "./dist/esm/parsePublicEnv.js",
+      "require": "./dist/parsePublicEnv.js",
+      "types": "./dist/parsePublicEnv.d.ts"
     }
   },
   "scripts": {

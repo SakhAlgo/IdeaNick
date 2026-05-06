@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-process.env.WEBAPP_URL = 'https://example.com';
+const env_1 = require("../env");
 const pumpGetRoute_1 = require("./pumpGetRoute");
+env_1.sharedEnv.WEBAPP_URL = 'https://example.com';
 describe('pgr', () => {
     it('return simple route', () => {
         const getSimpleRoute = (0, pumpGetRoute_1.pgr)(() => '/simple');

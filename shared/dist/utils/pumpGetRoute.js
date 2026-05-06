@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.pgr = void 0;
+/* eslint-disable import/order */
+const env_1 = require("../env");
 const react_router_dom_1 = require("react-router-dom");
-const baseUrl = process.env.VITE_WEBAPP_URL || process.env.WEBAPP_URL;
 function pumpGetRoute(routeParamsOrGetRoute, maybeGetRoute) {
     const routeParamsDefinition = typeof routeParamsOrGetRoute === 'function' ? {} : routeParamsOrGetRoute;
     const getRoute = typeof routeParamsOrGetRoute === 'function' ? routeParamsOrGetRoute : maybeGetRoute;
@@ -11,7 +12,7 @@ function pumpGetRoute(routeParamsOrGetRoute, maybeGetRoute) {
     const pumpedGetRoute = (routeParams) => {
         const route = getRoute(routeParams);
         if (routeParams?.abs) {
-            return `${baseUrl}${route}`;
+            return `${env_1.sharedEnv.WEBAPP_URL}${route}`;
         }
         else {
             return route;
