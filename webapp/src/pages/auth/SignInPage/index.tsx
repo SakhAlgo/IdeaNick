@@ -10,6 +10,7 @@ import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
 // import { getAllIdeasRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
+import { trackEvent } from '../../../lib/yandexMetrika'
 
 export const SignInPage = withPageWrapper({
   redirectAuthorized: true,
@@ -26,6 +27,7 @@ export const SignInPage = withPageWrapper({
     validationSchema: zSignInTrpcInput,
     onSubmit: async (values) => {
       const { token } = await signIn.mutateAsync(values)
+      trackEvent('signIn')
       Cookies.set('token', token, { expires: 99999 })
       void trpcUtils.invalidate()
       // navigate(getAllIdeasRoute())

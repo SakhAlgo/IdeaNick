@@ -11,6 +11,7 @@ import { useForm } from '../../../lib/form'
 import { withPageWrapper } from '../../../lib/pageWrapper'
 // import { getAllIdeasRoute } from '../../../lib/routes'
 import { trpc } from '../../../lib/trpc'
+import { trackEvent } from '../../../lib/yandexMetrika'
 
 export const SignUpPage = withPageWrapper({
   redirectAuthorized: true,
@@ -33,6 +34,7 @@ export const SignUpPage = withPageWrapper({
       .superRefine(zPasswordsMustBeTheSame('password', 'passwordAgain')),
     onSubmit: async (values) => {
       const { token } = await signUp.mutateAsync(values)
+      trackEvent('signUp')
       Cookies.set('token', token, { expires: 99999 })
       void trpcUtils.invalidate()
       // navigate(getAllIdeasRoute())
