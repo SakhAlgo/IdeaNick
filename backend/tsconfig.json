@@ -16,8 +16,8 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "outDir": "./dist",
+    "rootDir": "./src",
     "resolveJsonModule": true,
-    // "rootDir": "./src",
     "skipLibCheck": true,
     "sourceMap": true,
     "sourceRoot": "/",
@@ -26,6 +26,7 @@
     "types": ["node", "jest"]
   },
 
-  "include": ["./src/**/*.ts", "prisma.config.ts"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "dist", "prisma.config.ts", "*.config.ts"]
   // "references": [{ "path": "../shared" }]
 }

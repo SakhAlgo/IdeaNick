@@ -2,5 +2,6 @@
   "eslint.workingDirectories": ["backend", "webapp", "shared"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
-  }
+  },
+  "liveServer.settings.port": 5501
 }
