@@ -70,7 +70,7 @@ export const sendWelcomeEmail = async ({ user }: { user: Pick<User, 'nick' | 'em
     templateName: 'welcome',
     templateVariables: {
       userNick: user.nick,
-      addIdeaUrl: `${env.WEBAPP_URL}${getNewIdeaRoute()}}`,
+      addIdeaUrl: `${env.WEBAPP_URL}${getNewIdeaRoute()}`,
     },
   })
 }

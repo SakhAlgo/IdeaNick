@@ -1,5 +1,4 @@
-const cloudinaryCloudName = process.env.VITE_CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_CLOUD_NAME
-const cloudinaryUrl = `https://res.cloudinary.com/${cloudinaryCloudName}/image/upload`
+import { sharedEnv } from './env'
 
 type CloudinaryUploadType = {
   folder: string
@@ -34,6 +33,11 @@ export type CloudinaryUploadTypeName = keyof CloudinaryUploadTypes
 export type CloudinaryUploadPresetName<TTypeName extends CloudinaryUploadTypeName> =
   keyof CloudinaryUploadTypes[TTypeName]['presets']
 
+const getCloudinaryUrl = () => {
+  const cloudName = sharedEnv.CLOUDINARY_CLOUD_NAME
+  return `https://res.cloudinary.com/${cloudName}/image/upload`
+}
+
 export const getCloudinaryUploadUrl = <TTypeName extends CloudinaryUploadTypeName>(
   publicId: string,
   typeName: TTypeName,
@@ -41,7 +45,7 @@ export const getCloudinaryUploadUrl = <TTypeName extends CloudinaryUploadTypeNam
 ) => {
   const type = cloudinaryUploadTypes[typeName] as CloudinaryUploadType
   const preset = type.presets[presetName as string]
-  return `${cloudinaryUrl}/${preset}/${publicId}`
+  return `${getCloudinaryUrl()}/${preset}/${publicId}`
 }
 
 export const getAvatarUrl = (

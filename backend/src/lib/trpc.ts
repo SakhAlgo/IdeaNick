@@ -58,7 +58,7 @@ export const trpcLoggedProcedure = trpc.procedure.use(
 
     if (result.ok) {
       logger.info(`trpc:${opts.type}:success`, 'Successfull request', { ...meta, output: result.data })
-    } else {
+    } else if (!result.ok && 'error' in result) {
       logger.error(`trpc:${opts.type}:error`, result.error, meta)
     }
 

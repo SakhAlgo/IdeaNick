@@ -4,44 +4,44 @@
   "private": true,
   "exports": {
     "./routes": {
+      "types": "./dist/routes.d.ts",
       "import": "./dist/esm/routes.js",
-      "require": "./dist/routes.js",
-      "types": "./dist/routes.d.ts"
+      "require": "./dist/routes.js"
     },
     "./zod": {
+      "types": "./dist/zod.d.ts",
       "import": "./dist/esm/zod.js",
-      "require": "./dist/zod.js",
-      "types": "./dist/zod.d.ts"
+      "require": "./dist/zod.js"
     },
     "./pick": {
+      "types": "./dist/pick.d.ts",
       "import": "./dist/esm/pick.js",
-      "require": "./dist/pick.js",
-      "types": "./dist/pick.d.ts"
+      "require": "./dist/pick.js"
     },
     "./omit": {
+      "types": "./dist/omit.d.ts",
       "import": "./dist/esm/omit.js",
-      "require": "./dist/omit.js",
-      "types": "./dist/omit.d.ts"
+      "require": "./dist/omit.js"
     },
     "./cloudinary": {
+      "types": "./dist/cloudinary.d.ts",
       "import": "./dist/esm/cloudinary.js",
-      "require": "./dist/cloudinary.js",
-      "types": "./dist/cloudinary.d.ts"
+      "require": "./dist/cloudinary.js"
     },
     "./s3": {
+      "types": "./dist/s3.d.ts",
       "import": "./dist/esm/s3.js",
-      "require": "./dist/s3.js",
-      "types": "./dist/s3.d.ts"
+      "require": "./dist/s3.js"
     },
     "./getKeysAsArray": {
+      "types": "./dist/getKeysAsArray.d.ts",
       "import": "./dist/esm/getKeysAsArray.js",
-      "require": "./dist/getKeysAsArray.js",
-      "types": "./dist/getKeysAsArray.d.ts"
+      "require": "./dist/getKeysAsArray.js"
     },
     "./parsePublicEnv": {
+      "types": "./dist/parsePublicEnv.d.ts",
       "import": "./dist/esm/parsePublicEnv.js",
-      "require": "./dist/parsePublicEnv.js",
-      "types": "./dist/parsePublicEnv.d.ts"
+      "require": "./dist/parsePublicEnv.js"
     }
   },
   "scripts": {

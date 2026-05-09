@@ -15,7 +15,16 @@ export const createIdeaTrpcRoute = trpcLoggedProcedure.input(zCreateIdeaTrpcInpu
     throw new ExpectedError('Idea is blocked by administrator')
   }
   await ctx.prisma.idea.create({
-    data: { ...input, authorId: ctx.me.id },
+    data: {
+      name: input.name,
+      nick: input.nick,
+      description: input.description,
+      text: input.text,
+      images: input.images,
+      certificate: input.certificate,
+      documents: input.documents,
+      author: { connect: { id: ctx.me.id } },
+    },
   })
   return true
 })

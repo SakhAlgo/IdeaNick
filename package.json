@@ -13,7 +13,14 @@
     "lint": "pnpm -r --parallel lint",
     "prettify": "pnpm  -r --parallel prettify",
     "gencmp": "node create-component.js",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dcc": "dotenv -e ./.env.docker -e ./backend/.env -e ./webapp/.env -- docker compose config",
+    "dcb": "dotenv -e ./.env.docker -e ./backend/.env -e ./webapp/.env -- docker compose build",
+    "dcu": "dotenv -e ./.env.docker -e ./backend/.env -e ./webapp/.env -- docker compose up"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "dotenv-cli": "^11.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -21,7 +28,6 @@
     "backend": "^0.0.0",
     "concurrently": "^9.2.1",
     "copyfiles": "^2.4.1",
-    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
